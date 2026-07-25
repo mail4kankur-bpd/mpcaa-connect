@@ -1,0 +1,44 @@
+.mpcaa-dashboard{
+    margin-top:20px;
+}
+
+.mpcaa-widget{
+    background:#fff;
+    border:1px solid #dcdcde;
+    border-radius:8px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.mpcaa-widget h2{
+    margin-top:0;
+    margin-bottom:15px;
+}
+
+.mpcaa-stat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.mpcaa-stat-card{
+    border:1px solid #e2e4e7;
+    border-radius:6px;
+    text-align:center;
+    padding:20px;
+}
+
+.mpcaa-stat-value{
+    font-size:32px;
+    font-weight:700;
+}
+
+.mpcaa-stat-label{
+    margin-top:8px;
+    color:#646970;
+}
+
+.mpcaa-actions .button{
+    margin-right:10px;
+    margin-bottom:10px;
+}
