@@ -1,6 +1,6 @@
 <?php
 /**
- * Membership Service.
+ * Member Service.
  *
  * @package MPCAAConnect
  */
@@ -11,82 +11,79 @@ namespace MPCAAConnect\Services;
 
 defined( 'ABSPATH' ) || exit;
 
-use MPCAAConnect\Repository\MembershipTypesRepository;
+use MPCAAConnect\Repository\MembersRepository;
 
-/**
- * Membership Service.
- */
-final class MembershipService {
+final class MemberService {
 
 	/**
-	 * Repository instance.
+	 * Repository.
 	 *
-	 * @var MembershipTypesRepository
+	 * @var MembersRepository
 	 */
-	private MembershipTypesRepository $repository;
+	private MembersRepository $repository;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param MembershipTypesRepository|null $repository Repository instance.
-	 */
-	public function __construct( ?MembershipTypesRepository $repository = null ) {
+	public function __construct( ?MembersRepository $repository = null ) {
 
-		$this->repository = $repository ?? new MembershipTypesRepository();
+		$this->repository = $repository ?? new MembersRepository();
 	}
 
-	/**
-	 * Get all membership types.
-	 *
-	 * @return array
-	 */
-	public function all(): array {
-
-		return $this->repository->all();
-	}
-
-	/**
-	 * Find a membership type.
-	 *
-	 * @param int $id Membership type ID.
-	 * @return array|null
-	 */
 	public function find( int $id ): ?array {
 
 		return $this->repository->find( $id );
 	}
 
-	/**
-	 * Create a membership type.
-	 *
-	 * @param array $data Membership type data.
-	 * @return int
-	 */
+	public function get( array $args = array() ): array {
+
+		return $this->repository->get( $args );
+	}
+
+	public function find_by_member_id( string $member_id ): ?array {
+
+		return $this->repository->find_by_member_id( $member_id );
+	}
+
+	public function find_by_email( string $email ): ?array {
+
+		return $this->repository->find_by_email( $email );
+	}
+
+	public function find_by_phone( string $phone ): ?array {
+
+		return $this->repository->find_by_phone( $phone );
+	}
+
+	public function find_by_batch( int $batch_id ): array {
+
+		return $this->repository->find_by_batch( $batch_id );
+	}
+
+	public function search( string $keyword, int $limit = 25 ): array {
+
+		return $this->repository->search( $keyword, $limit );
+	}
+
 	public function create( array $data ): int {
 
 		return $this->repository->create( $data );
 	}
 
-	/**
-	 * Update a membership type.
-	 *
-	 * @param int   $id Membership type ID.
-	 * @param array $data Membership type data.
-	 * @return bool
-	 */
 	public function update( int $id, array $data ): bool {
 
 		return $this->repository->update( $id, $data );
 	}
 
-	/**
-	 * Delete a membership type.
-	 *
-	 * @param int $id Membership type ID.
-	 * @return bool
-	 */
 	public function delete( int $id ): bool {
 
 		return $this->repository->delete( $id );
+	}
+
+	public function exists( int $id ): bool {
+
+		return $this->repository->exists( $id );
+	}
+
+	public function count( array $criteria = array() ): int {
+
+		return $this->repository->count( $criteria );
 	}
 }
